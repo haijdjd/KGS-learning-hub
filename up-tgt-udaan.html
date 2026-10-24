@@ -1,91 +1,309 @@
 
-<div id="video-player" style="display:none;background:#101f35;padding:15px;border-radius:14px;margin:15px 0">
-  <h3 id="playing-title">Lecture Video</h3>
-  <div style="position:relative;width:100%;aspect-ratio:16/9;margin-top:10px">
-    <iframe id="lecture-frame" title="Lecture video player"
-      style="position:absolute;width:100%;height:100%;inset:0;border:0;border-radius:10px"
-      allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
-      allowfullscreen></iframe>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071426">
+<title>UP TGT Udaan Batch 2026 | KGS Learning Hub</title>
+<style>
+:root{--bg:#071426;--panel:#102139;--panel2:#152b46;--gold:#e9c36b;--light:#ffe5a1;--white:#f7f9fd;--muted:#adbbcf;--line:#30445d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:radial-gradient(ellipse at top right,#203d61,transparent 40%),linear-gradient(145deg,#050b16,#0a1a2f 60%,#060d18);color:var(--white);font-family:system-ui,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1100px,93%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#071426f5;border-bottom:1px solid #ffffff20;backdrop-filter:blur(12px)}
+.nav{min-height:68px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-weight:900;display:flex;align-items:center;gap:10px}
+.logo{background:linear-gradient(135deg,var(--light),var(--gold));color:#142238;border-radius:12px;padding:8px 11px}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px}
+.btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#ffffff08;color:white;font-size:13px;font-weight:800}
+.primary{background:linear-gradient(135deg,var(--light),var(--gold));color:#172238;border:0}
+.hero{padding:30px 0 20px}
+.hero-card{padding:clamp(22px,5vw,42px);border:1px solid #8e7848;border-radius:22px;background:linear-gradient(125deg,#172b45,#0b1728 70%)}
+.tag{display:inline-block;padding:6px 10px;border:1px solid #e9c36b66;border-radius:25px;color:var(--light);font-size:11px}
+h1{font-size:clamp(30px,6vw,49px);line-height:1.2;margin:15px 0}
+h2{font-size:clamp(22px,4vw,30px);margin:0 0 6px}
+.gold{color:var(--light)}
+.muted{color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.stat{background:#07142699;border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat strong{display:block;color:var(--light);font-size:22px}
+.stat span{font-size:11px;color:var(--muted)}
+section{scroll-margin-top:85px}
+.block{padding:22px 0}
+.player{display:none;padding:15px;background:var(--panel);border:1px solid var(--gold);border-radius:15px;margin:16px 0}
+.player iframe,.player video{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
+.player video{height:auto}
+.close{margin-top:12px;padding:9px 12px;border-radius:8px;background:#243951;color:white;border:1px solid var(--line)}
+.search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:#071426;color:white;margin:14px 0;outline:none}
+.search:focus{border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.subject{align-self:start;border:1px solid var(--line);border-radius:13px;background:#ffffff05;overflow:hidden}
+.subject[open]{border-color:#b59a5a;background:#12243b}
+summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:14px}
+summary::-webkit-details-marker{display:none}
+.ico{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#e9c36b18;color:var(--light);font-size:20px;flex-shrink:0}
+.info{flex:1;min-width:0}
+.info strong{display:block}
+.info small{display:block;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.arrow{color:var(--light)}
+.lectures{padding:0 12px 13px;border-top:1px solid #ffffff13}
+.teacher{color:var(--light);font-size:12px;margin:10px 0}
+.lecture{margin-top:9px;padding:12px;border:1px solid #ffffff12;border-radius:10px;background:#071426}
+.lecture-title{font-weight:800;font-size:13px}
+.lecture-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.mini{border:1px solid #a18a54;background:#e9c36b12;color:var(--light);border-radius:7px;padding:7px 9px;font-size:11px;font-weight:800}
+.status{font-size:11px;color:var(--muted)}
+.note{margin-top:14px;padding:12px;border:1px solid #e9c36b35;border-radius:10px;color:var(--muted);font-size:12px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.feature,.testbox{padding:18px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}
+.testbox{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:25px 0;color:var(--muted);font-size:12px}
+.toast{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);z-index:30;background:#142944;border:1px solid var(--gold);border-radius:10px;padding:12px 16px;max-width:90%;font-size:13px}
+@media(max-width:650px){.grid,.features{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:9px}.nav .btn{font-size:11px;padding:8px}.hero{padding-top:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="index.html"><span class="logo">KGS</span><span>KGS LEARNING HUB<small>UP TGT UDAAN • 2026</small></span></a>
+  <a class="btn primary" href="index.html">← Main Website</a>
+ </div>
+</header>
+
+<main class="wrap">
+ <section class="hero">
+  <div class="hero-card">
+   <span class="tag">UP TGT • UDAAN BATCH 2026</span>
+   <h1>उड़ान बैच 2026<br><span class="gold">Social Science (SST)</span></h1>
+   <p class="muted">विषय चुनें, लेक्चर चलाएँ और अपनी तैयारी की प्रगति सेव करें।</p>
+   <div class="actions">
+    <a class="btn primary" href="#curriculum">📚 Course Curriculum</a>
+    <a class="btn" href="#tests">📝 Practice Tests</a>
+   </div>
+   <div class="stats">
+    <div class="stat"><strong>07</strong><span>विषय</span></div>
+    <div class="stat"><strong>27</strong><span>Economics क्लासें*</span></div>
+    <div class="stat"><strong id="completed-count">0</strong><span>पूरे लेक्चर</span></div>
+   </div>
   </div>
-  <button type="button" onclick="closeLecture()"
-    style="padding:10px;margin-top:12px;border-radius:8px">
-    ✕ वीडियो बंद करें
-  </button>
-</div>
+ </section>
+
+ <section id="watch" class="block">
+  <div class="player" id="video-player">
+   <h3 id="playing-title">Lecture Video</h3>
+   <div id="player-content" style="margin-top:10px"></div>
+   <button class="close" type="button" onclick="closeLecture()">✕ वीडियो बंद करें</button>
+  </div>
+ </section>
+
+ <section class="block" id="curriculum">
+  <h2>Course Curriculum <span class="gold">& Syllabus</span></h2>
+  <p class="muted">विषय खोलकर अपनी क्लास चुनें। वीडियो इसी पेज पर चलाने की कोशिश करेगा।</p>
+  <input class="search" id="subject-search" type="search" placeholder="🔎 विषय या शिक्षक खोजें..." aria-label="विषय खोजें">
+  <div class="grid" id="subject-list"></div>
+  <div class="note">*Economics में Orientation + Lecture 01–26 हैं। PDF लिंक अभी उपलब्ध नहीं कराए गए हैं। खाली लिंक होने पर सामग्री उपलब्ध नहीं होगी। प्रगति इस ब्राउज़र में सेव होती है।</div>
+ </section>
+
+ <section class="block" id="materials">
+  <h2>Notes & PDF</h2>
+  <div class="feature">
+   <p class="muted">PDF/Notes के लिंक मिलते ही संबंधित लेक्चर के साथ जोड़े जा सकते हैं। अभी कोई PDF लिंक नहीं दिया गया है।</p>
+  </div>
+ </section>
+
+ <section class="block" id="tests">
+  <h2>Practice Test Series</h2>
+  <div class="testbox">
+   <div><strong>Practice Test 01</strong><p class="muted" style="font-size:13px">टेस्ट लिंक उपलब्ध होने पर यहाँ से शुरू करें।</p></div>
+   <a class="btn primary" id="test-link" href="#tests">Start Test →</a>
+  </div>
+ </section>
+
+ <section class="block" id="details">
+  <h2>Batch Subjects</h2>
+  <div class="features">
+   <div class="feature">💹 <strong>Economics</strong><p class="muted">Suchit Sir</p></div>
+   <div class="feature">📜 <strong>History</strong><p class="muted">Himanshu Sir</p></div>
+   <div class="feature">🧬 <strong>Biology</strong><p class="muted">Satpreet Ma'am</p></div>
+   <div class="feature">💻 <strong>Computer</strong><p class="muted">Sanjay Srivastava Sir</p></div>
+   <div class="feature">⚖️ <strong>Polity</strong><p class="muted">Himanshu Sir</p></div>
+   <div class="feature">🏛️ <strong>Political Science</strong><p class="muted">Himanshu Sir</p></div>
+   <div class="feature">🌍 <strong>Geography</strong><p class="muted">Bhanu Sir</p></div>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <strong style="color:var(--light);letter-spacing:1px">KGS LEARNING HUB</strong>
+  <p>Learn with focus. Prepare with confidence.</p>
+  <p>© 2026 KGS Learning Hub</p>
+  <p style="margin-top:10px">Developer by Priya Ji ♥</p>
+ </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-function getEmbedUrl(rawUrl){
-  try{
-    const u = new URL(rawUrl);
-    if(!["https:","http:"].includes(u.protocol)) return "";
-    const host = u.hostname.toLowerCase();
-    let id = "";
+const subjects=[
+{name:"Economics",teacher:"Suchit Sir",icon:"₹",lectures:[
+{title:"Orientation Class",video:"https://www.youtube.com/live/zv6bpNCniq4"},
+{title:"Lecture 01",video:"https://www.youtube.com/live/hLnenm4T--8"},
+{title:"Lecture 02",video:"https://www.youtube.com/live/df3V9R5CfHg"},
+{title:"Lecture 03",video:"https://www.youtube.com/live/KF5IYe4NCVs"},
+{title:"Lecture 04",video:"https://www.youtube.com/live/xj9znfMCWIc"},
+{title:"Lecture 05",video:"https://www.youtube.com/live/FlKC_WSXoXw"},
+{title:"Lecture 06",video:"https://www.youtube.com/live/ZfRK_wJDbnA"},
+{title:"Lecture 07",video:"https://www.youtube.com/live/l-fy8tF-2GY"},
+{title:"Lecture 08",video:"https://www.youtube.com/live/C4ApFEzBAIM"},
+{title:"Lecture 09",video:"https://www.youtube.com/live/3JM6MW_SCAM"},
+{title:"Lecture 10",video:"https://www.youtube.com/live/0K1YCTXUvMk"},
+{title:"Lecture 11",video:"https://www.youtube.com/live/YM0KNIC4SSM"},
+{title:"Lecture 12",video:"https://www.youtube.com/live/vGORWWdlKcs"},
+{title:"Lecture 13",video:"https://www.youtube.com/live/SwcS3qO0VCI"},
+{title:"Lecture 14",video:"https://www.youtube.com/live/P_U_HO92Sqg"},
+{title:"Lecture 15",video:"https://www.youtube.com/live/etkooIEp3kY"},
+{title:"Lecture 16",video:"https://www.youtube.com/live/BvKWAdeYw-Q"},
+{title:"Lecture 17",video:"https://www.youtube.com/live/mJBISKiFHqg"},
+{title:"Lecture 18",video:"https://www.youtube.com/live/O5OtHQDrw0U"},
+{title:"Lecture 19",video:"https://www.youtube.com/live/acgQawKr4Gs"},
+{title:"Lecture 20",video:"https://www.youtube.com/live/pnZvminfunY"},
+{title:"Lecture 21",video:"https://www.youtube.com/live/FQafF6j1FEI"},
+{title:"Lecture 22",video:"https://www.youtube.com/live/p-nGpEW3paA"},
+{title:"Lecture 23",video:"https://www.youtube.com/live/6wTdcqpQBQM"},
+{title:"Lecture 24",video:"https://www.youtube.com/live/-e239MjbBgE"},
+{title:"Lecture 25",video:"https://www.youtube.com/live/BSD0X8GIzKM"},
+{title:"Lecture 26",video:"https://www.youtube.com/live/059hlU6R-58"}
+]},
+{name:"History",teacher:"Himanshu Sir",icon:"📜",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{name:"Biology",teacher:"Satpreet Ma'am",icon:"🧬",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{name:"Computer",teacher:"Sanjay Srivastava Sir",icon:"💻",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{name:"Polity",teacher:"Himanshu Sir",icon:"⚖️",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{name:"Political Science",teacher:"Himanshu Sir",icon:"🏛️",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{name:"Geography",teacher:"Bhanu Sir",icon:"🌍",lectures:[
+{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]}
+];
 
-    if(host === "youtu.be"){
-      id = u.pathname.split("/").filter(Boolean)[0] || "";
-    }else if(host.endsWith("youtube.com")){
-      if(u.pathname === "/watch") id = u.searchParams.get("v") || "";
-      else {
-        const parts = u.pathname.split("/").filter(Boolean);
-        if(["live","embed","shorts"].includes(parts[0])) id = parts[1] || "";
-      }
-    }
+const storageKey="kgsUdaan2026Completed";
+const toast=document.getElementById("toast");
+let completed=[];
+try{
+ const saved=JSON.parse(localStorage.getItem(storageKey)||"[]");
+ if(Array.isArray(saved)) completed=saved;
+}catch(e){completed=[]}
 
-    if(id && /^[a-zA-Z0-9_-]{11}$/.test(id)){
-      return "https://www.youtube-nocookie.com/embed/" + id;
-    }
-
-    // Direct video files can be played through a native video element.
-    if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(u.pathname + u.search)){
-      return u.href;
-    }
-    return "";
-  }catch(e){
-    return "";
-  }
+function showMessage(message){
+ toast.textContent=message;
+ toast.style.display="block";
+ clearTimeout(window.kgsToastTimer);
+ window.kgsToastTimer=setTimeout(()=>toast.style.display="none",2600);
 }
-
-function playLecture(title, url){
-  const safeUrl = getEmbedUrl(url);
-  if(!safeUrl){
-    alert("यह वीडियो लिंक समर्थित नहीं है। अधिकृत YouTube या direct MP4 लिंक जोड़ें।");
-    return;
+function getYoutubeEmbed(raw){
+ try{
+  const u=new URL(raw);
+  if(u.protocol!=="https:")return "";
+  let id="";
+  if(u.hostname==="youtu.be")id=u.pathname.split("/").filter(Boolean)[0]||"";
+  else if(u.hostname==="youtube.com"||u.hostname.endsWith(".youtube.com")){
+   if(u.pathname==="/watch")id=u.searchParams.get("v")||"";
+   else{
+    const p=u.pathname.split("/").filter(Boolean);
+    if(["live","embed","shorts"].includes(p[0]))id=p[1]||"";
+   }
   }
-
-  const player = document.getElementById("video-player");
-  const frame = document.getElementById("lecture-frame");
-  document.getElementById("playing-title").textContent = title;
-
-  if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(new URL(safeUrl).pathname)){
-    frame.src = "";
-    let video = document.getElementById("direct-video");
-    if(!video){
-      video = document.createElement("video");
-      video.id = "direct-video";
-      video.controls = true;
-      video.playsInline = true;
-      video.style.cssText = "width:100%;margin-top:10px;border-radius:10px";
-      frame.parentElement.after(video);
-    }
-    video.src = safeUrl;
-    video.style.display = "block";
-    frame.style.display = "none";
-  }else{
-    const video = document.getElementById("direct-video");
-    if(video){video.pause();video.removeAttribute("src");video.load();video.style.display="none";}
-    frame.style.display = "block";
-    frame.src = safeUrl;
-  }
-
-  player.style.display = "block";
-  player.scrollIntoView({behavior:"smooth",block:"start"});
+  return /^[A-Za-z0-9_-]{11}$/.test(id)?"https://www.youtube-nocookie.com/embed/"+id:"";
+ }catch(e){return ""}
 }
-
+function playLecture(title,url){
+ const player=document.getElementById("video-player");
+ const content=document.getElementById("player-content");
+ const embed=getYoutubeEmbed(url);
+ if(!embed){showMessage("इस लेक्चर का वीडियो लिंक अभी उपलब्ध नहीं है।");return}
+ document.getElementById("playing-title").textContent=title;
+ content.innerHTML="";
+ const frame=document.createElement("iframe");
+ frame.title=title;
+ frame.src=embed;
+ frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+ frame.allowFullscreen=true;
+ frame.referrerPolicy="strict-origin-when-cross-origin";
+ content.appendChild(frame);
+ player.style.display="block";
+ document.getElementById("watch").scrollIntoView({behavior:"smooth"});
+}
 function closeLecture(){
-  const frame = document.getElementById("lecture-frame");
-  frame.src = "";
-  const video = document.getElementById("direct-video");
-  if(video){video.pause();video.removeAttribute("src");video.load();}
-  document.getElementById("video-player").style.display = "none";
+ document.getElementById("player-content").innerHTML="";
+ document.getElementById("video-player").style.display="none";
 }
+function saveProgress(){
+ try{localStorage.setItem(storageKey,JSON.stringify(completed))}
+ catch(e){showMessage("इस ब्राउज़र में प्रगति सेव नहीं हो सकी।")}
+}
+function updateCount(){
+ document.getElementById("completed-count").textContent=completed.length;
+}
+function esc(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function renderSubjects(query=""){
+ const list=document.getElementById("subject-list");
+ const term=query.trim().toLowerCase();
+ const filtered=subjects.filter(s=>(s.name+" "+s.teacher).toLowerCase().includes(term));
+ if(!filtered.length){list.innerHTML='<p class="note">कोई विषय नहीं मिला।</p>';return}
+ list.innerHTML=filtered.map((s,index)=>{
+  const lectures=s.lectures.map(l=>{
+   const key=s.name+"-"+l.title;
+   const done=completed.includes(key);
+   const videoButton=l.video
+    ?`<button class="mini" type="button" data-play="${esc(s.name)}" data-title="${esc(l.title)}" data-url="${esc(l.video)}">▶ Video चलाएँ</button>`
+    :`<button class="mini" type="button" data-unavailable="video">▶ Video उपलब्ध नहीं</button>`;
+   return `<div class="lecture">
+    <div class="lecture-title">${esc(l.title)}</div>
+    <div class="status">${done?"✓ पूरा हुआ":"अभी बाकी"}</div>
+    <div class="lecture-actions">
+     ${videoButton}
+     <button class="mini" type="button" data-pdf="1">📄 PDF / Notes</button>
+     <button class="mini" type="button" data-done="${esc(key)}">${done?"↺ फिर से बाकी करें":"✓ पूरा हुआ मार्क करें"}</button>
+    </div>
+   </div>`;
+  }).join("");
+  return `<details class="subject" ${term&&index===0?"open":""}>
+   <summary><span class="ico">${s.icon}</span><span class="info"><strong>${esc(s.name)}</strong><small>By ${esc(s.teacher)} · ${s.lectures.length} lectures listed</small></span><span class="arrow">＋</span></summary>
+   <div class="lectures"><p class="teacher">${esc(s.name)} — ${esc(s.teacher)}</p>${lectures}</div>
+  </details>`;
+ }).join("");
+}
+document.getElementById("subject-search").addEventListener("input",e=>renderSubjects(e.target.value));
+document.addEventListener("click",e=>{
+ const play=e.target.closest("[data-play]");
+ if(play){playLecture(play.dataset.title,play.dataset.url);return}
+ const done=e.target.closest("[data-done]");
+ if(done){
+  const key=done.dataset.done;
+  completed=completed.includes(key)?completed.filter(x=>x!==key):[...completed,key];
+  saveProgress();updateCount();renderSubjects(document.getElementById("subject-search").value);
+  showMessage(completed.includes(key)?"लेक्चर पूरा मार्क हुआ।":"लेक्चर फिर से बाकी में रखा गया।");
+  return;
+ }
+ if(e.target.closest("[data-pdf]"))showMessage("इस लेक्चर का PDF लिंक अभी नहीं जोड़ा गया है।");
+ if(e.target.closest("[data-unavailable]"))showMessage("इस विषय का वीडियो लिंक अभी नहीं जोड़ा गया है।");
+});
+document.getElementById("test-link").addEventListener("click",e=>{
+ e.preventDefault();showMessage("Practice Test का लिंक अभी नहीं जोड़ा गया है।");
+});
+renderSubjects();
+updateCount();
 </script>
+</body>
+</html>
