@@ -10,173 +10,487 @@
 
 <style>
 :root{
-  --bg:#071126;--panel:#101f3d;--blue:#1769ff;
-  --cyan:#27e4ff;--gold:#ffd34d;--white:#f8fbff;--muted:#b6c4dc;
+  --bg:#071126;
+  --panel:#101f3d;
+  --blue:#1769ff;
+  --cyan:#27e4ff;
+  --gold:#ffd34d;
+  --white:#f8fbff;
+  --muted:#b6c4dc;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  background:radial-gradient(ellipse at top right,#163d78 0,transparent 36%),
-  linear-gradient(150deg,#050b19,#091a38 58%,#060d1d);
-  color:var(--white);min-height:100vh
+  background:
+    radial-gradient(ellipse at top right,#163d78 0,transparent 36%),
+    linear-gradient(150deg,#050b19,#091a38 58%,#060d1d);
+  color:var(--white);
+  min-height:100vh;
 }
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1120px,92%);margin:auto}
+
+/* HEADER */
 header{
-  padding:16px 0;border-bottom:1px solid #ffffff18;
-  background:#071126ef;position:sticky;top:0;z-index:5
+  padding:16px 0;
+  border-bottom:1px solid #ffffff18;
+  background:#071126ef;
+  position:sticky;
+  top:0;
+  z-index:5;
+  backdrop-filter:blur(12px);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:1px}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-weight:900;
+  letter-spacing:1px;
+}
 .logo{
-  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+  width:54px;
+  height:54px;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
   background:linear-gradient(135deg,var(--gold),#ff8b2b);
-  color:#09152b;font-size:20px
+  color:#09152b;
+  font-size:25px;
 }
-.brand small{display:block;font-size:11px;letter-spacing:2px;color:var(--muted);margin-top:2px}
-.navtag{font-size:11px;border:1px solid #27e4ff66;color:var(--cyan);border-radius:30px;padding:9px 12px}
-.hero{padding:54px 0 30px;text-align:center}
+.brand small{
+  display:block;
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.navtag{
+  font-size:11px;
+  border:1px solid #27e4ff66;
+  color:var(--cyan);
+  border-radius:30px;
+  padding:10px 13px;
+  white-space:nowrap;
+}
+
+/* HERO */
+.hero{
+  padding:54px 0 35px;
+  text-align:center;
+}
 .eyebrow{
-  display:inline-block;color:var(--gold);border:1px solid #ffd34d55;
-  background:#ffd34d12;padding:8px 14px;border-radius:30px;
-  font-weight:800;font-size:11px;letter-spacing:1.4px
+  display:inline-block;
+  color:var(--gold);
+  border:1px solid #ffd34d55;
+  background:#ffd34d12;
+  padding:9px 15px;
+  border-radius:30px;
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:1.4px;
 }
-h1{font-size:clamp(34px,6vw,62px);line-height:1.1;margin:20px auto 14px}
+h1{
+  font-size:clamp(34px,6vw,62px);
+  line-height:1.14;
+  margin:22px auto 16px;
+}
 .gradient{
   background:linear-gradient(90deg,#fff,var(--cyan),#a8baff);
-  -webkit-background-clip:text;background-clip:text;color:transparent
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
-.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:16px;line-height:1.8}
-.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:23px}
-.stat{border:1px solid #ffffff1c;background:#ffffff08;padding:10px 14px;border-radius:12px;font-size:12px}
-main{padding:18px 0 65px}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:20px 0}
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:var(--muted);
+  font-size:clamp(15px,2.5vw,20px);
+  line-height:1.8;
+}
+.stats{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+.stat{
+  border:1px solid #ffffff1c;
+  background:#ffffff08;
+  padding:12px 15px;
+  border-radius:13px;
+  font-size:13px;
+}
+
+/* MAIN */
+main{padding:24px 0 55px}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin:10px 0 20px;
+}
 .section-head h2{font-size:clamp(23px,3vw,32px)}
-.section-head p{color:var(--muted);font-size:13px;margin-top:5px}
+.section-head p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* FEATURED BATCH */
 .batch{
-  display:grid;grid-template-columns:1.08fr 1fr;overflow:hidden;
-  border:1px solid #6e9cff40;border-radius:24px;
+  display:grid;
+  grid-template-columns:1fr;
+  overflow:hidden;
+  border:1px solid #6e9cff40;
+  border-radius:24px;
   background:linear-gradient(135deg,#12264a,#0c1730);
-  box-shadow:0 22px 70px #0005
+  box-shadow:0 22px 70px #0005;
 }
-.thumb{position:relative;background:#0a1530;min-height:270px}
-.thumb img{width:100%;height:100%;min-height:270px;object-fit:cover;display:block}
-.content{padding:clamp(22px,4vw,38px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.pill{background:#ffcf3e;color:#10172a;padding:7px 11px;border-radius:8px;font-size:11px;font-weight:900;letter-spacing:1px}
-.content h3{font-size:clamp(25px,3.2vw,38px);line-height:1.18;margin:17px 0 10px}
+.thumb{
+  position:relative;
+  background:#0a1530;
+  width:100%;
+  overflow:hidden;
+}
+.thumb img{
+  width:100%;
+  max-height:390px;
+  aspect-ratio:16/8;
+  object-fit:cover;
+  display:block;
+}
+.content{
+  padding:clamp(22px,4vw,38px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+}
+.pill{
+  background:#ffcf3e;
+  color:#10172a;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.content h3{
+  font-size:clamp(25px,3.2vw,38px);
+  line-height:1.2;
+  margin:17px 0 12px;
+}
 .content h3 span{color:var(--cyan)}
-.content p{color:var(--muted);line-height:1.7;font-size:14px}
-.meta{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0 22px}
-.meta span{font-size:11px;background:#ffffff0d;border:1px solid #ffffff17;padding:8px 10px;border-radius:9px}
-.actions{display:flex;flex-wrap:wrap;gap:10px;width:100%}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 17px;border-radius:12px;font-weight:800;font-size:13px}
-.primary{background:linear-gradient(100deg,#1769ff,#21b9ff);color:white}
-.secondary{border:1px solid #ffffff30;background:#ffffff09;color:#edf5ff}
-.curriculum-btn{
-  display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;
-  padding:18px;border-radius:18px;background:linear-gradient(100deg,#1769ff,#21b9ff);
-  color:#fff;font-size:17px;font-weight:800;text-align:center;
-  box-shadow:0 8px 25px #1769ff35;transition:transform .2s,box-shadow .2s
+.content p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
 }
-.curriculum-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px #1769ff55}
-#curriculum{scroll-margin-top:100px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
-.feature{padding:20px;border:1px solid #ffffff17;background:#ffffff06;border-radius:16px}
-.feature b{display:block;margin:8px 0 5px;font-size:15px}
-.feature p{font-size:13px;color:var(--muted);line-height:1.6}
-.feature .ico{font-size:23px}
-.notice{
-  margin-top:22px;border:1px solid #ffd34d45;background:#ffd34d0c;
-  padding:15px 17px;border-radius:14px;color:#e8eefa;font-size:12px;line-height:1.7
+.meta{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:18px 0 22px;
+}
+.meta span{
+  font-size:12px;
+  background:#ffffff0d;
+  border:1px solid #ffffff17;
+  padding:9px 11px;
+  border-radius:9px;
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  width:100%;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 17px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:13px;
+}
+.secondary{
+  border:1px solid #ffffff30;
+  background:#ffffff09;
+  color:#edf5ff;
+}
+.curriculum-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:58px;
+  padding:16px;
+  border-radius:15px;
+  background:linear-gradient(100deg,#1769ff,#21b9ff);
+  color:#fff;
+  font-size:16px;
+  font-weight:800;
+  text-align:center;
+  box-shadow:0 8px 25px #1769ff35;
+  transition:transform .2s,box-shadow .2s;
+}
+.curriculum-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px #1769ff55;
+}
+
+/* SYLLABUS INSIDE BATCH CARD */
+.batch-curriculum{
+  width:100%;
+  padding:0 clamp(14px,3vw,30px) 30px;
 }
 .curriculum{
-  margin:42px 0;padding:clamp(17px,4vw,32px);
-  border:1px solid #27e4ff35;border-radius:24px;
-  background:linear-gradient(145deg,#101f3d,#081329);box-shadow:0 20px 55px #0004
+  width:100%;
+  margin:0;
+  padding:clamp(17px,4vw,32px);
+  border:1px solid #27e4ff35;
+  border-radius:22px;
+  background:linear-gradient(145deg,#101f3d,#081329);
+  box-shadow:0 15px 45px #0003;
+  scroll-margin-top:100px;
 }
-.curriculum-heading{text-align:center;margin-bottom:26px}
+.curriculum-heading{
+  text-align:center;
+  margin-bottom:26px;
+}
 .curriculum-tag{
-  display:inline-block;color:var(--gold);border:1px solid #ffd34d55;
-  border-radius:30px;padding:7px 12px;font-size:10px;font-weight:800;letter-spacing:1px
+  display:inline-block;
+  color:var(--gold);
+  border:1px solid #ffd34d55;
+  border-radius:30px;
+  padding:8px 12px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
 }
-.curriculum-heading h2{font-size:clamp(25px,4vw,37px);margin:15px 0 9px}
+.curriculum-heading h2{
+  font-size:clamp(25px,4vw,37px);
+  margin:15px 0 9px;
+}
 .curriculum-heading h2 span{color:var(--cyan)}
-.curriculum-heading p{color:var(--muted);font-size:13px;line-height:1.7}
-.curriculum-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.subject-card{
-  align-self:start;overflow:hidden;border:1px solid #ffffff20;
-  border-radius:16px;background:#ffffff08;transition:border-color .2s
+.curriculum-heading p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
 }
-.subject-card[open]{border-color:#27e4ff90;background:#102448}
-.subject-card summary{display:flex;align-items:center;gap:12px;padding:16px;cursor:pointer;list-style:none}
+.curriculum-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.subject-card{
+  align-self:start;
+  overflow:hidden;
+  border:1px solid #ffffff20;
+  border-radius:16px;
+  background:#ffffff08;
+  transition:border-color .2s,background .2s;
+}
+.subject-card[open]{
+  border-color:#27e4ff90;
+  background:#102448;
+}
+.subject-card summary{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px;
+  cursor:pointer;
+  list-style:none;
+}
 .subject-card summary::-webkit-details-marker{display:none}
 .subject-icon{
-  flex-shrink:0;width:44px;height:44px;display:grid;place-items:center;
-  border-radius:13px;background:linear-gradient(135deg,#1769ff,#27e4ff);
-  color:white;font-size:21px
+  flex-shrink:0;
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:linear-gradient(135deg,#1769ff,#27e4ff);
+  color:white;
+  font-size:21px;
 }
 .subject-info{flex:1;min-width:0}
-.subject-info strong{display:block;font-size:15px}
-.subject-info small{display:block;color:var(--muted);font-size:12px;margin-top:5px;overflow-wrap:anywhere}
-.subject-arrow{color:var(--cyan);font-size:22px;transition:transform .2s}
-.subject-card[open] .subject-arrow{transform:rotate(45deg)}
-.lecture-list{padding:0 15px 15px;border-top:1px solid #ffffff12}
-.teacher-label{font-size:12px;color:var(--cyan);margin:13px 0}
-.lecture-item{padding:12px;margin-top:8px;border-radius:10px;background:#050d1e;color:#f8fbff;font-size:13px}
-.lecture-item small{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.6}
-.curriculum-note{
-  margin-top:20px;padding:13px;border-radius:12px;background:#ffd34d0d;
-  border:1px solid #ffd34d35;color:#dce8ff;font-size:12px;line-height:1.7
+.subject-info strong{
+  display:block;
+  font-size:15px;
 }
-footer{border-top:1px solid #ffffff17;padding:25px 0 35px;text-align:center;color:#8fa2c4;font-size:12px}
-footer strong{color:#eaf3ff;letter-spacing:2px}
+.subject-info small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+  overflow-wrap:anywhere;
+}
+.subject-arrow{
+  color:var(--cyan);
+  font-size:22px;
+  transition:transform .2s;
+}
+.subject-card[open] .subject-arrow{transform:rotate(45deg)}
+.lecture-list{
+  padding:0 15px 15px;
+  border-top:1px solid #ffffff12;
+}
+.teacher-label{
+  font-size:12px;
+  color:var(--cyan);
+  margin:13px 0;
+}
+.lecture-item{
+  padding:13px;
+  margin-top:8px;
+  border-radius:10px;
+  background:#050d1e;
+  color:#f8fbff;
+  font-size:14px;
+  border:1px solid #ffffff10;
+}
+.lecture-item small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
+  line-height:1.6;
+}
+.curriculum-note{
+  margin-top:20px;
+  padding:14px;
+  border-radius:12px;
+  background:#ffd34d0d;
+  border:1px solid #ffd34d35;
+  color:#dce8ff;
+  font-size:12px;
+  line-height:1.8;
+}
 
-/* PRIYA JI LOVE ANIMATION */
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:24px;
+}
+.feature{
+  padding:20px;
+  border:1px solid #ffffff17;
+  background:#ffffff06;
+  border-radius:16px;
+}
+.feature b{
+  display:block;
+  margin:8px 0 5px;
+  font-size:15px;
+}
+.feature p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.feature .ico{font-size:23px}
+
+/* FOOTER */
+footer{
+  border-top:1px solid #ffffff17;
+  padding:32px 0 42px;
+  text-align:center;
+  color:#8fa2c4;
+  font-size:14px;
+}
+footer strong{
+  color:#eaf3ff;
+  letter-spacing:2px;
+}
+
+/* DEVELOPER BY PRIYA JI ANIMATION */
 .developer-love{
-  text-align:center;margin-top:22px;padding:18px 10px;
-  border-top:1px solid #ff4f9a35;color:#ffd6e7;
-  font-size:15px;font-weight:800;letter-spacing:1px
+  text-align:center;
+  margin-top:24px;
+  padding:20px 10px;
+  border-top:1px solid #ff4f9a35;
+  color:#ffd6e7;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:1px;
 }
 .developer-love .name{
   display:inline-block;
   background:linear-gradient(90deg,#ff77b7,#fff,#ff3d81,#ff77b7);
   background-size:250% auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:loveGlow 2s ease-in-out infinite alternate,loveColor 3s linear infinite
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:loveGlow 2s ease-in-out infinite alternate,
+            loveColor 3s linear infinite;
 }
 .developer-love .heart{
-  display:inline-block;color:#ff3d81;
-  animation:heartBeat 1s ease-in-out infinite
+  display:inline-block;
+  color:#ff3d81;
+  animation:heartBeat 1s ease-in-out infinite;
 }
 @keyframes heartBeat{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.4)}
+  50%{transform:scale(1.3)}
 }
 @keyframes loveGlow{
   from{filter:drop-shadow(0 0 2px #ff4f9a)}
-  to{filter:drop-shadow(0 0 10px #ff4f9a)}
+  to{filter:drop-shadow(0 0 9px #ff4f9a)}
 }
-@keyframes loveColor{to{background-position:250% center}}
+@keyframes loveColor{
+  to{background-position:250% center}
+}
 
+/* MOBILE RESPONSIVE */
 @media(max-width:760px){
-  .hero{padding:40px 0 24px}
-  .batch{grid-template-columns:1fr}
-  .thumb,.thumb img{min-height:0;aspect-ratio:16/9}
+  .hero{padding:40px 0 27px}
   .features{grid-template-columns:1fr}
-  .section-head{align-items:flex-start;flex-direction:column}
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
   .navtag{font-size:9px;padding:8px}
   .content{padding:23px}
+  .thumb img{
+    max-height:none;
+    aspect-ratio:16/9;
+  }
+  .batch-curriculum{padding:0 12px 16px}
   .actions .btn,.actions .curriculum-btn{flex:1 1 100%}
 }
-@media(max-width:600px){.curriculum-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .curriculum-grid{grid-template-columns:1fr}
+  .logo{width:48px;height:48px}
+  .brand small{font-size:10px;letter-spacing:1.5px}
+  .curriculum{padding:16px}
+  .subject-card summary{padding:14px}
+}
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="wrap nav">
     <a class="brand" href="#" aria-label="KGS Home">
@@ -189,7 +503,10 @@ footer strong{color:#eaf3ff;letter-spacing:2px}
 
 <section class="hero wrap">
   <span class="eyebrow">YOUR PREPARATION, OUR PRIORITY</span>
-  <h1>आपकी तैयारी का नया<br><span class="gradient">डिजिटल ठिकाना</span></h1>
+  <h1>
+    आपकी तैयारी का नया<br>
+    <span class="gradient">डिजिटल ठिकाना</span>
+  </h1>
   <p>KGS Learning Hub पर UP TGT 2026 उड़ान बैच की विषयवार जानकारी और क्लास सूची देखें।</p>
   <div class="stats">
     <span class="stat">🎯 Exam-focused learning</span>
@@ -199,6 +516,7 @@ footer strong{color:#eaf3ff;letter-spacing:2px}
 </section>
 
 <main class="wrap">
+
   <div class="section-head">
     <div>
       <h2>Featured Batch <span style="color:#27e4ff">/ प्रमुख बैच</span></h2>
@@ -207,150 +525,213 @@ footer strong{color:#eaf3ff;letter-spacing:2px}
     <span class="navtag">2026 BATCH</span>
   </div>
 
-  <article class="batch">
+  <!-- COMPLETE BATCH CARD -->
+  <article class="batch" id="batch">
+
     <div class="thumb">
-      <img src="assets/1000647670.jpg" alt="UP TGT 2026 उड़ान बैच Social Studies SST thumbnail">
+      <img src="assets/1000647670.jpg"
+           alt="UP TGT 2026 उड़ान बैच Social Studies SST thumbnail">
     </div>
+
     <div class="content">
       <span class="pill">UP TGT • 2026</span>
-      <h3>उड़ान बैच 2026<br><span>Social Science (SST)</span></h3>
-      <p>UP TGT Social Science की तैयारी के लिए विषयवार पाठ्यक्रम देखें। वास्तविक क्लास लिंक उपलब्ध होने पर संबंधित लेक्चर खोले जा सकेंगे।</p>
+      <h3>उड़ान बैच 2026<br>
+        <span>Social Science (SST)</span>
+      </h3>
+      <p>
+        UP TGT Social Science की तैयारी के लिए विषयवार पाठ्यक्रम देखें।
+        नीचे अपने विषय को खोलकर लेक्चर सूची तक पहुँचें।
+      </p>
+
       <div class="meta">
         <span>📚 Social Science (SST)</span>
         <span>🎓 Udaan Batch</span>
         <span>🗓️ 2026</span>
       </div>
+
       <div class="actions">
-        <a class="curriculum-btn" href="#curriculum">📚 Course Curriculum देखें ↓</a>
-        <a class="btn secondary" href="#details">🎓 बैच की जानकारी ↓</a>
+        <a class="curriculum-btn" href="#curriculum">
+          📚 Course Curriculum देखें ↓
+        </a>
+        <a class="btn secondary" href="#details">
+          🎓 बैच की जानकारी ↓
+        </a>
       </div>
+    </div>
+
+    <!-- SYLLABUS IS INSIDE THE BATCH -->
+    <div class="batch-curriculum">
+      <section class="curriculum" id="curriculum">
+
+        <div class="curriculum-heading">
+          <span class="curriculum-tag">UP TGT • UDAAN BATCH 2026</span>
+          <h2>Course Curriculum <span>&amp; Syllabus</span></h2>
+          <p>अपने विषय का चयन करें और संबंधित क्लास सूची देखें।</p>
+        </div>
+
+        <div class="curriculum-grid">
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">₹</span>
+              <span class="subject-info">
+                <strong>Economics</strong>
+                <small>By Suchit Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Economics by Suchit Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">📜</span>
+              <span class="subject-info">
+                <strong>History</strong>
+                <small>By Himanshu Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">History by Himanshu Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">🧬</span>
+              <span class="subject-info">
+                <strong>Biology</strong>
+                <small>By Satpreet Ma'am</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Biology by Satpreet Ma'am</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">💻</span>
+              <span class="subject-info">
+                <strong>Computer</strong>
+                <small>By Sanjay Srivastava Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Computer by Sanjay Srivastava Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">⚖️</span>
+              <span class="subject-info">
+                <strong>Polity</strong>
+                <small>By Himanshu Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Polity by Himanshu Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">🏛️</span>
+              <span class="subject-info">
+                <strong>Political Science</strong>
+                <small>By Himanshu Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Political Science by Himanshu Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+          <details class="subject-card">
+            <summary>
+              <span class="subject-icon">🌍</span>
+              <span class="subject-info">
+                <strong>Geography</strong>
+                <small>By Bhanu Sir</small>
+              </span>
+              <span class="subject-arrow">＋</span>
+            </summary>
+            <div class="lecture-list">
+              <p class="teacher-label">Geography by Bhanu Sir</p>
+              <div class="lecture-item">
+                Lecture 01
+                <small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="curriculum-note">
+          नोट: सातों विषय और शिक्षक दिए गए विवरण के अनुसार जोड़े गए हैं।
+          अभी Lecture 01 केवल प्लेसहोल्डर है, वास्तविक वीडियो नहीं।
+          क्लास चलाने के लिए अपने या अनुमति-प्राप्त वीडियो लिंक जोड़ें।
+        </div>
+
+      </section>
     </div>
   </article>
 
-  <section class="curriculum" id="curriculum">
-    <div class="curriculum-heading">
-      <span class="curriculum-tag">UP TGT • UDAAN BATCH 2026</span>
-      <h2>Course Curriculum <span>&amp; Syllabus</span></h2>
-      <p>अपने विषय का चयन करें और संबंधित क्लास सूची देखें।</p>
-    </div>
-
-    <div class="curriculum-grid">
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">₹</span>
-          <span class="subject-info"><strong>Economics</strong><small>By Suchit Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Economics by Suchit Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">📜</span>
-          <span class="subject-info"><strong>History</strong><small>By Himanshu Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">History by Himanshu Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">🧬</span>
-          <span class="subject-info"><strong>Biology</strong><small>By Satpreet Ma'am</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Biology by Satpreet Ma'am</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">💻</span>
-          <span class="subject-info"><strong>Computer</strong><small>By Sanjay Srivastava Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Computer by Sanjay Srivastava Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">⚖️</span>
-          <span class="subject-info"><strong>Polity</strong><small>By Himanshu Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Polity by Himanshu Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">🏛️</span>
-          <span class="subject-info"><strong>Political Science</strong><small>By Himanshu Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Political Science by Himanshu Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-      <details class="subject-card">
-        <summary>
-          <span class="subject-icon">🌍</span>
-          <span class="subject-info"><strong>Geography</strong><small>By Bhanu Sir</small></span>
-          <span class="subject-arrow">＋</span>
-        </summary>
-        <div class="lecture-list">
-          <p class="teacher-label">Geography by Bhanu Sir</p>
-          <div class="lecture-item">Lecture 01<small>वीडियो लिंक अभी जोड़ा नहीं गया है।</small></div>
-        </div>
-      </details>
-
-    </div>
-
-    <div class="curriculum-note">
-      नोट: सातों विषय और शिक्षक दिए गए विवरण के अनुसार जोड़े गए हैं।
-      अभी Lecture 01 केवल प्लेसहोल्डर है, वास्तविक वीडियो नहीं।
-      क्लास चलाने के लिए अपने या अनुमति-प्राप्त वीडियो लिंक जोड़ें।
-    </div>
-  </section>
-
+  <!-- FEATURES -->
   <div class="features" id="details">
+
     <div class="feature">
       <span class="ico">📘</span>
       <b>Social Science (SST)</b>
       <p>UP TGT 2026 उड़ान बैच के विषयों की सूची एक ही स्थान पर।</p>
     </div>
+
     <div class="feature">
       <span class="ico">📅</span>
       <b>बैच अपडेट</b>
       <p>लेक्चर लिंक और पाठ्यक्रम की जानकारी उपलब्ध होने पर अपडेट करें।</p>
     </div>
+
     <div class="feature">
       <span class="ico">🔗</span>
       <b>लेक्चर सूची</b>
       <p>विषय खोलकर उस विषय के लेक्चर सेक्शन तक पहुँचें।</p>
     </div>
+
   </div>
 
-  <div class="notice">
-    यह KGS Learning Hub का स्वतंत्र शैक्षिक पेज है, आधिकारिक KGS वेबसाइट नहीं।
-    क्लास की उपलब्धता और वीडियो एक्सेस संबंधित प्रदाता की अनुमति पर निर्भर हैं।
-  </div>
 </main>
 
 <footer>
@@ -359,7 +740,6 @@ footer strong{color:#eaf3ff;letter-spacing:2px}
     <p style="margin-top:8px">Learn with focus. Prepare with confidence.</p>
     <p style="margin-top:10px">© 2026 KGS Learning Hub</p>
 
-    <!-- Stylish Developer Credit -->
     <div class="developer-love">
       ✨ Developer by
       <span class="name">Priya Ji</span>
@@ -370,5 +750,6 @@ footer strong{color:#eaf3ff;letter-spacing:2px}
     </div>
   </div>
 </footer>
+
 </body>
 </html>
