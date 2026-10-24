@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#071426">
 <title>UP TGT Udaan Batch 2026 | KGS Learning Hub</title>
 <style>
-:root{--bg:#071426;--panel:#102139;--panel2:#152b46;--gold:#e9c36b;--light:#ffe5a1;--white:#f7f9fd;--muted:#adbbcf;--line:#30445d}
+:root{--bg:#071426;--panel:#102139;--gold:#e9c36b;--light:#ffe5a1;--white:#f7f9fd;--muted:#adbbcf;--line:#30445d}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{margin:0;background:radial-gradient(ellipse at top right,#203d61,transparent 40%),linear-gradient(145deg,#050b16,#0a1a2f 60%,#060d18);color:var(--white);font-family:system-ui,Arial,sans-serif;line-height:1.6}
@@ -22,7 +22,9 @@ header{position:sticky;top:0;z-index:10;background:#071426f5;border-bottom:1px s
 .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px}
 .btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#ffffff08;color:white;font-size:13px;font-weight:800}
 .primary{background:linear-gradient(135deg,var(--light),var(--gold));color:#172238;border:0}
-.hero{padding:30px 0 20px}
+.hero{padding:24px 0 20px}
+.thumbnail{margin-bottom:18px;border:1px solid #e9c36b66;border-radius:16px;overflow:hidden;background:#102139}
+.thumbnail img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain}
 .hero-card{padding:clamp(22px,5vw,42px);border:1px solid #8e7848;border-radius:22px;background:linear-gradient(125deg,#172b45,#0b1728 70%)}
 .tag{display:inline-block;padding:6px 10px;border:1px solid #e9c36b66;border-radius:25px;color:var(--light);font-size:11px}
 h1{font-size:clamp(30px,6vw,49px);line-height:1.2;margin:15px 0}
@@ -37,8 +39,7 @@ h2{font-size:clamp(22px,4vw,30px);margin:0 0 6px}
 section{scroll-margin-top:85px}
 .block{padding:22px 0}
 .player{display:none;padding:15px;background:var(--panel);border:1px solid var(--gold);border-radius:15px;margin:16px 0}
-.player iframe,.player video{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
-.player video{height:auto}
+.player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
 .close{margin-top:12px;padding:9px 12px;border-radius:8px;background:#243951;color:white;border:1px solid var(--line)}
 .search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:#071426;color:white;margin:14px 0;outline:none}
 .search:focus{border-color:var(--gold)}
@@ -65,7 +66,7 @@ summary::-webkit-details-marker{display:none}
 .testbox{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:25px 0;color:var(--muted);font-size:12px}
 .toast{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);z-index:30;background:#142944;border:1px solid var(--gold);border-radius:10px;padding:12px 16px;max-width:90%;font-size:13px}
-@media(max-width:650px){.grid,.features{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:9px}.nav .btn{font-size:11px;padding:8px}.hero{padding-top:20px}}
+@media(max-width:650px){.grid,.features{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:9px}.nav .btn{font-size:11px;padding:8px}.hero{padding-top:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -79,6 +80,17 @@ footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:
 
 <main class="wrap">
  <section class="hero">
+
+  <!-- THUMBNAIL: assets/1000647670.jpg -->
+  <div class="thumbnail">
+   <img src="assets/1000647670.jpg"
+        alt="UP TGT Udaan Batch 2026 Thumbnail"
+        onerror="this.style.display='none';document.getElementById('thumbnail-error').style.display='block'">
+   <div id="thumbnail-error" style="display:none;padding:16px;color:#ffe5a1">
+    Thumbnail नहीं मिला। GitHub के assets फ़ोल्डर में 1000647670.jpg फ़ाइल चेक करें।
+   </div>
+  </div>
+
   <div class="hero-card">
    <span class="tag">UP TGT • UDAAN BATCH 2026</span>
    <h1>उड़ान बैच 2026<br><span class="gold">Social Science (SST)</span></h1>
@@ -86,10 +98,11 @@ footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:
    <div class="actions">
     <a class="btn primary" href="#curriculum">📚 Course Curriculum</a>
     <a class="btn" href="#tests">📝 Practice Tests</a>
+    <a class="btn" href="#materials">📄 Notes & PDF</a>
    </div>
    <div class="stats">
     <div class="stat"><strong>07</strong><span>विषय</span></div>
-    <div class="stat"><strong>27</strong><span>Economics क्लासें*</span></div>
+    <div class="stat"><strong>27</strong><span>Economics क्लासें</span></div>
     <div class="stat"><strong id="completed-count">0</strong><span>पूरे लेक्चर</span></div>
    </div>
   </div>
@@ -105,23 +118,23 @@ footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:
 
  <section class="block" id="curriculum">
   <h2>Course Curriculum <span class="gold">& Syllabus</span></h2>
-  <p class="muted">विषय खोलकर अपनी क्लास चुनें। वीडियो इसी पेज पर चलाने की कोशिश करेगा।</p>
+  <p class="muted">विषय खोलकर अपनी क्लास चुनें। उपलब्ध वीडियो इसी पेज पर चलाएँ।</p>
   <input class="search" id="subject-search" type="search" placeholder="🔎 विषय या शिक्षक खोजें..." aria-label="विषय खोजें">
   <div class="grid" id="subject-list"></div>
-  <div class="note">*Economics में Orientation + Lecture 01–26 हैं। PDF लिंक अभी उपलब्ध नहीं कराए गए हैं। खाली लिंक होने पर सामग्री उपलब्ध नहीं होगी। प्रगति इस ब्राउज़र में सेव होती है।</div>
+  <div class="note">Economics में Orientation + Lecture 01–26 हैं। अन्य विषयों के वीडियो और PDF लिंक उपलब्ध होने पर जोड़े जा सकते हैं। प्रगति इस ब्राउज़र में सेव होती है।</div>
  </section>
 
  <section class="block" id="materials">
-  <h2>Notes & PDF</h2>
+  <h2>Notes <span class="gold">& PDF</span></h2>
   <div class="feature">
-   <p class="muted">PDF/Notes के लिंक मिलते ही संबंधित लेक्चर के साथ जोड़े जा सकते हैं। अभी कोई PDF लिंक नहीं दिया गया है।</p>
+   <p class="muted">अभी अलग से PDF/Notes के लिंक उपलब्ध नहीं हैं। प्रत्येक लेक्चर के PDF बटन पर क्लिक करके स्थिति देख सकते हैं।</p>
   </div>
  </section>
 
  <section class="block" id="tests">
   <h2>Practice Test Series</h2>
   <div class="testbox">
-   <div><strong>Practice Test 01</strong><p class="muted" style="font-size:13px">टेस्ट लिंक उपलब्ध होने पर यहाँ से शुरू करें।</p></div>
+   <div><strong>Practice Test 01</strong><p class="muted" style="font-size:13px">टेस्ट का वास्तविक लिंक मिलने पर यहाँ जोड़ा जा सकता है।</p></div>
    <a class="btn primary" id="test-link" href="#tests">Start Test →</a>
   </div>
  </section>
@@ -200,7 +213,7 @@ const toast=document.getElementById("toast");
 let completed=[];
 try{
  const saved=JSON.parse(localStorage.getItem(storageKey)||"[]");
- if(Array.isArray(saved)) completed=saved;
+ if(Array.isArray(saved))completed=saved;
 }catch(e){completed=[]}
 
 function showMessage(message){
@@ -266,7 +279,7 @@ function renderSubjects(query=""){
    const key=s.name+"-"+l.title;
    const done=completed.includes(key);
    const videoButton=l.video
-    ?`<button class="mini" type="button" data-play="${esc(s.name)}" data-title="${esc(l.title)}" data-url="${esc(l.video)}">▶ Video चलाएँ</button>`
+    ?`<button class="mini" type="button" data-title="${esc(s.name+" — "+l.title)}" data-url="${esc(l.video)}">▶ Video चलाएँ</button>`
     :`<button class="mini" type="button" data-unavailable="video">▶ Video उपलब्ध नहीं</button>`;
    return `<div class="lecture">
     <div class="lecture-title">${esc(l.title)}</div>
@@ -286,21 +299,24 @@ function renderSubjects(query=""){
 }
 document.getElementById("subject-search").addEventListener("input",e=>renderSubjects(e.target.value));
 document.addEventListener("click",e=>{
- const play=e.target.closest("[data-play]");
+ const play=e.target.closest("[data-url]");
  if(play){playLecture(play.dataset.title,play.dataset.url);return}
  const done=e.target.closest("[data-done]");
  if(done){
   const key=done.dataset.done;
-  completed=completed.includes(key)?completed.filter(x=>x!==key):[...completed,key];
-  saveProgress();updateCount();renderSubjects(document.getElementById("subject-search").value);
-  showMessage(completed.includes(key)?"लेक्चर पूरा मार्क हुआ।":"लेक्चर फिर से बाकी में रखा गया।");
+  const wasDone=completed.includes(key);
+  completed=wasDone?completed.filter(x=>x!==key):[...completed,key];
+  saveProgress();updateCount();
+  renderSubjects(document.getElementById("subject-search").value);
+  showMessage(wasDone?"लेक्चर फिर से बाकी में रखा गया।":"लेक्चर पूरा मार्क हुआ।");
   return;
  }
  if(e.target.closest("[data-pdf]"))showMessage("इस लेक्चर का PDF लिंक अभी नहीं जोड़ा गया है।");
  if(e.target.closest("[data-unavailable]"))showMessage("इस विषय का वीडियो लिंक अभी नहीं जोड़ा गया है।");
 });
 document.getElementById("test-link").addEventListener("click",e=>{
- e.preventDefault();showMessage("Practice Test का लिंक अभी नहीं जोड़ा गया है।");
+ e.preventDefault();
+ showMessage("Practice Test का वास्तविक लिंक अभी नहीं जोड़ा गया है।");
 });
 renderSubjects();
 updateCount();
