@@ -81,14 +81,12 @@ footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:
 <main class="wrap">
  <section class="hero">
   <div class="thumbnail">
-   <img src="assets/1000647670.jpg"
-        alt="UP TGT Udaan Batch 2026 Thumbnail"
-        onerror="this.style.display='none';document.getElementById('thumbnail-error').style.display='block'">
+   <img src="assets/1000647670.jpg" alt="UP TGT Udaan Batch 2026 Thumbnail"
+   onerror="this.style.display='none';document.getElementById('thumbnail-error').style.display='block'">
    <div id="thumbnail-error" style="display:none;padding:16px;color:#ffe5a1">
     Thumbnail नहीं मिला। GitHub के assets फ़ोल्डर में 1000647670.jpg फ़ाइल चेक करें।
    </div>
   </div>
-
   <div class="hero-card">
    <span class="tag">UP TGT • UDAAN BATCH 2026</span>
    <h1>उड़ान बैच 2026<br><span class="gold">Social Science (SST)</span></h1>
@@ -119,13 +117,13 @@ footer{text-align:center;border-top:1px solid #ffffff20;margin-top:25px;padding:
   <p class="muted">विषय खोलकर अपनी क्लास चुनें। उपलब्ध वीडियो इसी पेज पर चलाएँ।</p>
   <input class="search" id="subject-search" type="search" placeholder="🔎 विषय या शिक्षक खोजें..." aria-label="विषय खोजें">
   <div class="grid" id="subject-list"></div>
-  <div class="note">Economics में Orientation + Lecture 01–26, History में Orientation + Lecture 01–15 और Biology में Orientation + Lecture 01–19 उपलब्ध हैं। प्रगति इस ब्राउज़र में सेव होती है।</div>
+  <div class="note">Economics: Orientation + Lecture 01–26; History: Orientation + Lecture 01–15; Biology: Orientation + Lecture 01–19; Polity: Lecture 01–27. प्रगति इस ब्राउज़र में सेव होती है।</div>
  </section>
 
  <section class="block" id="materials">
   <h2>Notes <span class="gold">& PDF</span></h2>
   <div class="feature">
-   <p class="muted">अभी अलग से PDF/Notes के लिंक उपलब्ध नहीं हैं। प्रत्येक लेक्चर के PDF बटन पर क्लिक करके स्थिति देख सकते हैं।</p>
+   <p class="muted">अभी अलग से PDF/Notes के लिंक उपलब्ध नहीं हैं।</p>
   </div>
  </section>
 
@@ -235,7 +233,34 @@ const subjects=[
 {name:"Computer",teacher:"Sanjay Srivastava Sir",icon:"💻",lectures:[
 {title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
 {name:"Polity",teacher:"Himanshu Sir",icon:"⚖️",lectures:[
-{title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
+{title:"Lecture 01",video:"https://www.youtube.com/live/-iFYBGwgLMQ?si=UAaeu7djOp7e2nXu"},
+{title:"Lecture 02",video:"https://www.youtube.com/live/yGzG_XuL8Kk?si=0Q2kwIFIvAGN8CtP"},
+{title:"Lecture 03",video:"https://www.youtube.com/live/UY1l_0hCUNE?si=pEhVyI4nKXKQQPd4"},
+{title:"Lecture 04",video:"https://www.youtube.com/live/vdOOsGbju_g?si=TYHZjRt-Wn2j1MD8"},
+{title:"Lecture 05",video:"https://www.youtube.com/live/nH5wGVdKG_4?si=UPTl312lUDPS0s9x"},
+{title:"Lecture 06",video:"https://www.youtube.com/live/8YTi4QvmmL8?si=MdU-jBRJfmYf1_Mv"},
+{title:"Lecture 07",video:"https://www.youtube.com/live/gDwtPoe_uKg?si=EtVYiKZOgGWF1w3g"},
+{title:"Lecture 08",video:"https://www.youtube.com/live/FNhOw10KDiU?si=5jVtzFtzzmjLw0KO"},
+{title:"Lecture 09",video:"https://www.youtube.com/live/m1Y9ykA6-NY?si=vbKYE1bxqQ054XnW"},
+{title:"Lecture 10",video:"https://www.youtube.com/live/zJIO3jF5Bog?si=KVL2iE45XpZUJKou"},
+{title:"Lecture 11",video:"https://www.youtube.com/live/gAoUVJFsDjw?si=kjk_BPEjPu5bOGos"},
+{title:"Lecture 12",video:"https://www.youtube.com/live/wC1-fYia8I0?si=vGIQMiBxIIqeqaHN"},
+{title:"Lecture 13",video:"https://www.youtube.com/live/pyaCcLfqcoI?si=tumajKiB6I45nvOK"},
+{title:"Lecture 14",video:"https://www.youtube.com/live/ozNt1jT59xM?si=_eScH-HlM1FjkMFB"},
+{title:"Lecture 15",video:"https://www.youtube.com/live/6G9mzrMkp2Y?si=m1oiWW69jj9cV68z"},
+{title:"Lecture 16",video:"https://www.youtube.com/live/Z1juJrpVIaA?si=LreQXLuNFMrLk71o"},
+{title:"Lecture 17",video:"https://www.youtube.com/live/FG0taIK3GDs?si=tgl9IiFDODPAfTIk"},
+{title:"Lecture 18",video:"https://www.youtube.com/live/k0dOwnsFq_0?si=giomllMSm-StFDhm"},
+{title:"Lecture 19",video:"https://www.youtube.com/live/w_oxd2bBRko?si=m0jsK_uA7ihrkxlp"},
+{title:"Lecture 20",video:"https://www.youtube.com/live/mYP5AuQdKZc?si=EWgv9ZxZeo2apN4f"},
+{title:"Lecture 21",video:"https://www.youtube.com/live/ljJpEaWgPXw?si=ecyPzddMyY1TQZ3g"},
+{title:"Lecture 22",video:"https://www.youtube.com/live/v-woA0xi3k8?si=98D7d89nBV7Arkqc"},
+{title:"Lecture 23",video:"https://www.youtube.com/live/SGMhXNwt-1s?si=xbRZRg62G94UCnm7"},
+{title:"Lecture 24",video:"https://www.youtube.com/live/x51CLUnjMck?si=qz05LZLN-aEXMJln"},
+{title:"Lecture 25",video:"https://www.youtube.com/live/XN0-S1fXRC4?si=5R7A-BX-PZp3WSkK"},
+{title:"Lecture 26",video:"https://www.youtube.com/live/AYvORo3wH9Y?si=R95RBFiKcQrrTZ0R"},
+{title:"Lecture 27",video:"https://www.youtube.com/live/8d4IEtJcTGg?si=4YKraSkJAC9gmOo0"}
+]},
 {name:"Political Science",teacher:"Himanshu Sir",icon:"🏛️",lectures:[
 {title:"Lecture 01",video:""},{title:"Lecture 02",video:""}]},
 {name:"Geography",teacher:"Bhanu Sir",icon:"🌍",lectures:[
